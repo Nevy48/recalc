@@ -28,11 +28,8 @@ describe("History", () => {
 
         expect(histories.length).toEqual(1)
         expect(histories[0].firstArg).toEqual(2)
-        //Arreglar el bug que hace que no se guarde el segundo parametro en la tabla History y hacer el test correspondiente
-        expect(histories[0].secondArg).toEqual(2)
         expect(histories[0].result).toEqual(0)
         expect(histories[0].Operation.name).toEqual("SUB")
-        //. Hacer un test que compruebe que el nuevo atributo efectivamente se guarde en la base de datos.
         expect(histories[0].error).toEqual("")
     })
 })
@@ -110,3 +107,22 @@ describe("History", () => {
         expect(entrada.result).toEqual(51);  
     });
 });
+
+describe("History", () => {
+    test("El segundo parametro deberia guardarse en la base de datos", async () => {
+        await createHistoryEntry({
+            firstArg: 8,
+            secondArg: 4,
+            result: 4,
+            operationName: "SUB",
+            error:""
+        })
+
+        const histories = await History.findAll({
+            include: [Operation]
+        })
+
+        expect(histories.length).toEqual(1)
+        expect(histories[0].result).toEqual(4)
+    })
+})
