@@ -81,4 +81,14 @@ test.describe('test', () => {
     expect(historyEntry.secondArg).toEqual(2)
     expect(historyEntry.result).toEqual(30)
   });
+
+  test('Debería limpiar el display', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('button', { name: '7' }).click();
+    await page.getByRole('button', { name: 'c' }).click();
+
+    await page.waitForSelector('[data-testid="display"]');
+    await expect(page.getByTestId('display')).toHaveValue('');
+  });
+
 })
