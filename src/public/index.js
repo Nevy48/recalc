@@ -29,6 +29,10 @@ $buttons.addEventListener('click', async (e) => {
         return renderDisplay(result);
     }
 
+    if (nextAction === "c") {
+        return clearDisplay();
+    }
+
     if (operations.includes(nextAction)) {
         operation = nextAction;
     }
@@ -59,6 +63,11 @@ async function calculateDiv(firstArg, secondArg) {
 function renderDisplay(chars) {
     currentDisplay = chars;
     $display.value = chars;
+}
+
+function clearDisplay() {
+    currentDisplay = "";
+    $display.value = "";
 }
 
 function rerender() { }
