@@ -9,6 +9,7 @@ export async function seed() {
         { name: "MUL" },
         { name: "DIV" },
         { name: "POW" },
+        { name: "SQRT" },
     ])
 }
 
