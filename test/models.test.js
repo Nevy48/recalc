@@ -37,6 +37,30 @@ describe("History", () => {
 })
 
 describe("History", () => {
+    test("Deberia poder crear una sqrt en el history", async () => {
+        await createHistoryEntry({
+            firstArg: 16,
+            secondArg: null,
+            result: 4,
+            operationName: "SQRT",
+            error:""
+        })
+
+        const histories = await History.findAll({
+            include: [Operation]
+        })
+
+        expect(histories.length).toEqual(1)
+        expect(histories[0].firstArg).toEqual(16)
+        expect(histories[0].secondArg).toEqual(null)
+        expect(histories[0].result).toEqual(4)
+        expect(histories[0].Operation.name).toEqual("SQRT")
+        expect(histories[0].error).toEqual("")
+    })
+})
+
+
+describe("History", () => {
     test("Debería devolver un mensaje de historial borrado", async() => {
         await createHistoryEntry({
             firstArg: 10,

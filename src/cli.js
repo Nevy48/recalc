@@ -16,7 +16,7 @@ async function loop() {
         console.log("👋👋👋");
         return readline.close();
     }
-    if  (fnName != "add" && fnName !="sub" && fnName != "mul" && fnName != "div" && fnName != "pow" && fnName != "exit") {
+    if  (fnName != "add" && fnName !="sub" && fnName != "mul" && fnName != "div" && fnName != "pow" && fnName != "sqrt" && fnName != "exit") {
         console.log("Función erronea");
         return loop();
     }
@@ -25,6 +25,10 @@ async function loop() {
 
     const firstNum = await readline.question("Ingrese el primer número: ")
     if (fnName == "pow") {
+        const result = fn(Number(firstNum));
+        console.log(result);
+    }
+    else if (fnName == "sqrt") {
         const result = fn(Number(firstNum));
         console.log(result);
     }

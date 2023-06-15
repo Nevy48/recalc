@@ -106,3 +106,34 @@ describe('Pow', () => {
         expect(() => core.pow('a')).toThrow('El parámetro no es un número');
     });
 })});
+
+//Test de Raiz Cuadrada
+describe('Sqrt', () => {
+    test('Deberia √16 = 4', () => {
+        expect(core.sqrt(16)).toBe(4); 
+    });
+
+    test('Deberia √625 = 25', () => {
+        expect(core.sqrt(625)).toBe(25); 
+    });
+
+    test('Deberia √2401 = 49', () => {
+        expect(core.sqrt(2401)).toBe(49); 
+    });
+
+    test('Deberia √10000 = 100', () => {
+        expect(core.sqrt(10000)).toBe(100); 
+    });
+
+    test('Deberia √256 = 16', () => {
+        expect(core.sqrt(256)).toBe(16); 
+    });
+
+    test('Deberia dar como resultado un numero positivo', () => {
+        expect(core.sqrt(25)).toBeGreaterThan(0);
+    });
+
+    test('Deberia lanzar error al intentar usar un parámetro que no es un número', () => {
+        expect(() => core.sqrt('a')).toThrow('El parámetro no es un número');
+    });
+});

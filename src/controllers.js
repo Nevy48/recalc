@@ -78,6 +78,19 @@ router.get("/pow/:a", async function (req, res) {
     }
 });
 
+router.get("/sqrt/:a", async function (req, res) {
+    const params = req.params;
+    const a = Number(params.a);
+
+    if (isNaN(a)) {
+        res.status(400).json({message:'El parámetro no es un número'});
+    } else {
+        const result = core.sqrt(a);
+        await createHistoryEntry({ firstArg: a, secondArg: null, result, operationName: "SQRT"});
+        return res.send({ result });
+    }
+});
+
 router.get("/history/deleted", async function (req, res) {
     await deleteHistory();
     return res.send({ message: "history is deleted"});

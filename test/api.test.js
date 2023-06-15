@@ -121,3 +121,17 @@ describe("API div", () => {
         });
     });
   });
+
+describe("API sqrt", () => {
+    test("Debería responder con un 200 ok", async () => {
+        const app = await api.build();
+
+        return request(app)
+        .get('/api/v1/sqrt/4')
+        .expect(200)
+        .expect("Content-Type", "application/json; charset=utf-8")
+        .then((res) => {
+            expect(res.body.result).toEqual(2);
+        });
+    });
+});
