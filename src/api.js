@@ -18,8 +18,6 @@ export async function build() {
         res.sendFile(path.resolve(publicPath, 'index.html'))
     })
 
-    let nousada = 20;
-
     app.use("/api/v1", controllers);
 
     return app
