@@ -32,9 +32,13 @@ function divide(a, b) {
 
 function pow(a) {
     if (isNaN(a)) {
-        throw new Error("Error: El parámetro no es un número");
-    }  
-    return a * a;
+      throw new Error("Error: El parámetro no es un número");
+    }
+  
+    if (a > 100000) {
+      throw new Error("Error: El número no debe ser mayor a 100.000");
+    }
+    return a ** 2;
 }
 
 function sqrt(a) {
