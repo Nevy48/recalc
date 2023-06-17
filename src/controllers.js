@@ -29,10 +29,14 @@ router.get("/add/:a/:b", async function (req, res) {
 
     if (isNaN(a) || isNaN(b)) {
         res.status(400).send('Uno de los parámetros no es un número');
+        await createHistoryEntry({ firstArg: a, secondArg: b, result: null, operationName: "ADD" });
     } else {
         const result = core.add(a, b);
+        await createHistoryEntry({ firstArg: a, secondArg: b, result: result, operationName: "ADD" });
         return res.send({ result });
     }
+
+
 });
 
 router.get("/mul/:a/:b", async function (req, res) {
