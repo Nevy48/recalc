@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] 17-06-2023
+
+### Added
+
+- Funcionalidades de suma, division, multiplicacion y potencia para Frontend
+- Boton de Potencia
+- Raiz cuadrada
+
+### Fixed
+
+- Boton de C (clear)
+- Errores de guardado en BDD
 ## [1.3.2] 08-06-2023
 
 ### Fixed
@@ -60,6 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Funciones core para realizar suma, resta, multiplicación, división y potencia
 
 [unreleased]: https://github.com/frlp-utn-ingsoft/recalc/compare/v1.3.2...HEAD
+[1.4.1]: https://github.com/Nevy48/recalc/releases/tag/v1.4.1
 [1.3.2]: https://github.com/frlp-utn-ingsoft/recalc/releases/tag/v1.3.2
 [1.3.1]: https://github.com/frlp-utn-ingsoft/recalc/releases/tag/v1.3.1
 [1.3.0]: https://github.com/frlp-utn-ingsoft/recalc/releases/tag/v1.3.0
