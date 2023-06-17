@@ -1,7 +1,7 @@
 import express from 'express';
 import core from './core.js';
 
-import { createHistoryEntry, History, deleteHistory, getFullHistory} from './models.js'
+import { createHistoryEntry, deleteHistory, getFullHistory} from './models.js'
 import { buscarPorID } from './models.js'
 
 const router = express.Router();
