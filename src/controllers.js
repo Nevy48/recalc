@@ -55,14 +55,14 @@ router.get("/div/:a/:b", async function(req, res) {
 
     if (isNaN(a) || isNaN(b)) {
         return res.status(400).json({ message: 'Uno de los parámetros no es un número' });
-    } else if (b === 0) {
+    } 
+    if (b === 0) {
         await createHistoryEntry({ firstArg: a, secondArg: b, result: null, operationName: "DIV" });
         return res.status(400).json({ message: 'Error: No se puede dividir por 0' });
-    } else {
-        const result = core.div(a, b);
-        await createHistoryEntry({ firstArg: a, secondArg: b, result: result, operationName: "DIV" });
-        return res.json({ result });
     }
+    const result = core.div(a, b);
+    await createHistoryEntry({ firstArg: a, secondArg: b, result: result, operationName: "DIV" });
+    return res.json({ result });
 });
 
 router.get("/pow/:a", async function (req, res) {
