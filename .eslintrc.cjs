@@ -9,15 +9,15 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "no-unused-vars": 0,
-        "no-undef": 0,
-        "no-else-return": 0,
-        "no-empty-function": 0,
-        "no-eq-null": 0,
-        "eqeqeq": 0,
-        "dot-notation": 0,
-        "curly": 0,
-        "complexity": 0
+        "no-unused-vars": 2,
+        "no-undef": 2,
+        "no-else-return": 2,
+        "no-empty-function": 2,
+        "no-eq-null": 2,
+        "eqeqeq": 2,
+        "dot-notation": 2,
+        "curly": 2,
+        "complexity": 2
     },
     "overrides": [
         {

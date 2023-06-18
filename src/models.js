@@ -20,6 +20,11 @@ export const History = sequelize.define('History', {
     result: {
         type: DataTypes.NUMBER,
         allowNull: true
+    },
+
+    error: { //Agregar un atributo “error” de tipo texto en el modelo History para guardar la de cualquier error que se produzca en una operación
+        type: DataTypes.TEXT,
+        allowNull: true
     }
 });
 
@@ -33,7 +38,7 @@ export const Operation = sequelize.define('Operation', {
 Operation.hasMany(History)
 History.belongsTo(Operation)
 
-export async function createHistoryEntry({ firstArg, secondArg, operationName, result }) {
+export async function createHistoryEntry({ firstArg, secondArg, operationName, result, error}) {
     const operation = await Operation.findOne({
         where: {
             name: operationName
@@ -44,7 +49,8 @@ export async function createHistoryEntry({ firstArg, secondArg, operationName, r
         firstArg,
         secondArg,
         result,
-        OperationId: operation.id
+        OperationId: operation.id,
+        error
     })
 }
 
@@ -54,3 +60,29 @@ export function createTables() {
         Operation.sync({ force: true })
     ]);
 }
+
+export async function deleteHistory (){
+    return History.destroy(
+        {   where: {} 
+        });
+}
+
+export async function getFullHistory() {
+    return History.findAll();
+}
+
+//Hacer un endpoint para obtener una entrada del historial por id, con el test correspondiente
+export async function buscarPorID(historyId) {
+    try {
+      const history = await History.findByPk(historyId, { include: [Operation] });
+  
+      if (!history) {
+        throw new Error('No se encontró la entrada en el historial');
+      }
+  
+      return history;
+    } catch (error) {
+      throw new Error('No se pudo recuperar la entrada del historial');
+    }
+  }
+  

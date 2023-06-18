@@ -1,4 +1,4 @@
-# ReCalc v1.3.2
+# ReCalc v1.4.0
 
 Calculadora con funciones simples.
 
@@ -21,4 +21,4 @@ npm run test
 Cangaro Ignacio Gabriel,
 Dominguez Dolores,
 Kral Franco,
-Libano Santiago Matias
+Libano Santiago Matias.
