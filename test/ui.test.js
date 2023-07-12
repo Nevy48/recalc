@@ -164,6 +164,24 @@ test.describe('test', () => {
     await expect(page.getByTestId('display')).toHaveValue(/undefined/)
   });
 
+  test('Deberia arrojar error al hacer una potencia de un numero mayor a 100000', async ({ page }) => {
+    await page.goto('./');
+
+    await page.getByRole('button', { name: '200000' }).click()
+    await page.getByRole('button', { name: '^' }).click()
+
+    const [response] = await Promise.all([
+      page.waitForResponse((r) => r.url().includes('/api/v1/pow/')),
+      page.getByRole('button', { name: '=' }).click()
+    ]);
+
+    const { error } = await response.json();
+    expect(error).toBe(undefined);
+
+    await expect(page.getByTestId('display')).toHaveValue(/undefined/)
+  });
+
+
 
   test('Debería limpiar el display', async ({ page }) => {
     await page.goto('./');
