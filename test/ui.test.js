@@ -167,7 +167,7 @@ test.describe('test', () => {
   test('Deberia arrojar error al hacer una potencia de un numero mayor a 100000', async ({ page }) => {
     await page.goto('./');
 
-    await page.getByRole('button', { name: '2' }).click()
+    await page.getByRole('button', { name: '1' }).click()
     await page.getByRole('button', { name: '0' }).click()
     await page.getByRole('button', { name: '0' }).click()
     await page.getByRole('button', { name: '0' }).click()
