@@ -146,6 +146,48 @@ test.describe('test', () => {
     expect(historyEntry.result).toEqual(30)
   });
 
+  test('Deberia arrojar error al dividir un numero por 0', async ({ page }) => {
+    await page.goto('./');
+
+    await page.getByRole('button', { name: '6' }).click()
+    await page.getByRole('button', { name: '/' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+
+    const [response] = await Promise.all([
+      page.waitForResponse((r) => r.url().includes('/api/v1/div/')),
+      page.getByRole('button', { name: '=' }).click()
+    ]);
+
+    const { error } = await response.json();
+    expect(error).toBe(undefined);
+
+    await expect(page.getByTestId('display')).toHaveValue(/undefined/)
+  });
+
+  test('Deberia arrojar error al hacer una potencia de un numero mayor a 200000', async ({ page }) => {
+    await page.goto('./');
+
+    await page.getByRole('button', { name: '2' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+    await page.getByRole('button', { name: '0' }).click()
+    await page.getByRole('button', { name: '^' }).click()
+
+    const [response] = await Promise.all([
+      page.waitForResponse((r) => r.url().includes('/api/v1/pow/')),
+      page.getByRole('button', { name: '=' }).click()
+    ]);
+
+    const { error } = await response.json();
+    expect(error).toBe(undefined);
+
+    await expect(page.getByTestId('display')).toHaveValue(/undefined/)
+  });
+
+
+
   test('Debería limpiar el display', async ({ page }) => {
     await page.goto('./');
     await page.getByRole('button', { name: '7' }).click();
